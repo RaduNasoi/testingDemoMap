@@ -1,0 +1,27 @@
+.container{
+  width: 50%;
+  margin: 0 auto;
+  background-color: #DDDDDD;
+
+}
+p,input{display:inline-block}
+#username{
+  color: #5cb85c;
+}
+#price{
+  color:red;
+}
+
+.pagination>li.active>a {
+  background: #5cb85c;
+  color: #fff;
+}
+
+
+ .pagination>li>a{
+   border: 1px solid #222222;
+   color: #222222;
+ }
+ .pagination>li>span {
+  border: 1px solid #222222;
+}

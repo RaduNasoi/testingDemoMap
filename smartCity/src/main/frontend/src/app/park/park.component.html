@@ -1,0 +1,139 @@
+<!--<meta http-equiv="refresh" content="5">-->
+<body>
+
+
+<div class="container">
+
+  <h1>Smartcity</h1>
+
+  <hr>
+
+  <div class="row">
+
+    <div class="col-md-6 " id="map">
+
+      <div id="outerdiv" align="center">
+        <p align="center">Choose Event Marker:</p>
+        <label>
+
+          <select name="markerValue" [(ngModel)]="selectedValue">
+            <option *ngFor="let c of specificMarkers" [ngValue]="c" selected>{{c}}</option>
+          </select>
+
+        </label>
+
+        <p id="marker" align="center">{{selectedValue}}</p>
+
+        <agm-map [latitude]="lat"
+                 [longitude]="lng"
+                 [zoom]='zoom'
+                 (mapClick)="onMapClicked($event)">
+          <agm-marker *ngFor="let m of markers; let i = index"
+                      [iconUrl]="m.icon"
+                      [visible]='m.visible'
+                      (markerClick)="onClick(m)"
+                      [latitude]="m.lat"
+                      [longitude]="m.lng"
+                      [markerDraggable]="m.draggable"
+
+                      (dragEnd)="markerDragEnd(m, $event)">
+
+
+            <agm-info-window #infowindow>
+              <br>
+
+
+              <br>
+              <p style="text-align:center;" *ngIf="!isParking(m)"><span class="fa fa-user"></span><strong>
+                <a routerLink='/userProfile' #myProfile (click)="onClickUser(m.username)">{{m.username}}</a></strong> said: </p>
+              <p style="text-align:center;" *ngIf="isParking(m)"><span class="fa fa-map-o"></span><strong>
+                Parking: </strong></p>
+              <div class="eventText">
+
+                <strong><h3>{{m.name}}  </h3></strong>
+
+              </div>
+              <br>
+              <span *ngIf="isParking(m)"> <strong>Free parking spots: {{m.freeSpotsParking}}</strong> </span>
+
+              <div style="text-align:center;">
+                <br>
+                <form>
+                  <p *ngIf="!isParking(m)" for="event">Edit event:</p>
+                  <input *ngIf="!isParking(m)" type="text" id="event" [(ngModel)]="event" name="event"
+                         placeholder="Event name">
+
+
+                </form>
+                <br>
+                <button *ngIf="!isParking(m)" class="btn btn-success btn-sm"
+                        (click)="addEvent(m, event); infowindow.close()">Add Event
+                </button>
+                <button *ngIf="isSuperAdmin()" class="btn btn-success btn-sm" (click)="onDelete(m); infowindow.close()">
+                  Delete
+                </button>
+                <button *ngIf="isParking(m) && isThisParking(m)" (click)="bookAPlace(m)" class="btn btn-info"
+                        id="formSave"><span class="glyphicon glyphicon-plus"></span> Book a place
+                </button>
+                <button *ngIf="isParking(m) && isThisParking(m)" (click)="unbookAPlace(m)" class="btn btn-info"
+                        id="formSave2"><span class="glyphicon glyphicon-minus"></span> Cancel Book
+                </button>
+                <br>
+                <hr>
+                <div *ngIf="!isParking(m)" class="voter">
+
+                  <span style="color:#5cb85c">Rating:</span>
+                  <p class="fa fa-thumbs-up"
+                     [class.highlighted]="true"
+                     (click)="upVote(m)"></p>
+                  <span class="vote-count">{{ m.votes}}</span>
+
+                  <p class="fa fa-thumbs-down"
+                     [class.highlighted]="true"
+                     (click)="downVote(m)"></p>
+
+                </div>
+              </div>
+              <p id="error"></p>
+              <!--<h2>{{date | date: format}}</h2> <h2>{{date | date: "hh:mm:ss"}}</h2>-->
+            </agm-info-window>
+
+
+          </agm-marker>
+
+          <agm-map-directions></agm-map-directions>
+
+
+          <agm-circle [latitude]="parkingLat" [longitude]="parkingLng"
+                      [radius]="200000"
+                      [fillColor]="'green'">
+            <!--[circleDraggable]="true"-->
+            <!--[editable]="true">-->
+          </agm-circle>
+
+        </agm-map>
+
+      </div>
+
+    </div>
+
+    <div class="col-md-6 " id="right-panel">
+
+    </div>
+
+
+  </div>
+  <hr>
+  <br>
+
+  <button (click)="clicked()" class="btn btn-success btn-block btn-lg"><span class="glyphicon glyphicon-search"></span>
+    Search Parking
+  </button>
+  <!--<button *ngIf="isAdmin()" (click)="parkingPosition()" class="btn btn-success btn-block btn-lg"> <span class="fa fa-map-o"></span> Add Parking</button>-->
+</div>
+
+
+<br>
+
+
+</body>

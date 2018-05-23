@@ -1,0 +1,86 @@
+<body>
+<div id="fb-root"></div>
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand "  routerLink="home"><span class="fa fa-car" style="font-size:30px;color: #fff;background-color: #5cb85c;border-color: #4cae4c; border-radius: 3px;"></span>SmartCity</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li><a routerLink="home"> <span class="	fa fa-home"></span>Home</a></li>
+        <li *ngIf="isAdmin()" ><a routerLink="enrollpark"><span class="fa fa-pencil-square-o"></span>Have a parking?</a></li>
+        <li *ngIf="isUser()" ><a routerLink="park"> <span class="fa fa-map-o"></span>Parking</a></li>
+        <li *ngIf="isSuperAdmin()" ><a routerLink="adminPanel"> <span class="fa fa-user-secret"></span>Admin Panel</a></li>
+        <li *ngIf="isSuperAdmin()" ><a routerLink="transaction"> <span class="fa fa-user-secret"></span>See Transactions</a></li>
+        <li *ngIf="isAdmin()" ><a routerLink="payments"> <span class="fa fa-user-secret"></span>Payments</a></li>
+
+
+
+        <!--<li class="dropdown">-->
+          <!--<a class="dropdown-toggle" data-toggle="dropdown" >About us <span class="caret"></span></a>-->
+          <!--<ul class="dropdown-menu">-->
+            <!--<li><a href="#">Page 1-1</a></li>-->
+            <!--<li><a href="#">Page 1-2</a></li>-->
+            <!--<li><a href="#">Page 1-3</a></li>-->
+          <!--</ul>-->
+        <!--</li>-->
+
+
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li *ngIf="!isUser()"><a routerLink="/login"><span class="fa fa-unlock" ></span>Login</a></li>
+        <li *ngIf="!isUser()"><a routerLink="/register"><span class="	fa fa-users"></span>Sign up</a></li>
+        <li *ngIf="isUser()&&!isAnActiveBook()"><a routerLink="/logout" (click)="logout()"><span class="fa fa-lock"></span>Log out</a></li>
+        <li><a><span class="fa fa-user"></span><a routerLink="/myProfile" >Welcome <span id="user">{{currentUser()}}</span></a> </a></li>
+
+
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+
+
+
+
+<router-outlet>
+</router-outlet>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<hr>
+<p align="center"><strong>Login with:</strong> </p>
+
+<div class="footer">
+  <br>
+
+  <!--<fb:login-button show-faces="false" width="200" max-rows="1"></fb:login-button>-->
+
+<a (click)="fbLogin()" class="fa fa-facebook"></a>
+
+<a href="https://www.twitter.com/" class="fa fa-twitter"></a>
+
+  <a href="https://www.instagram.com/" class="fa fa-instagram"></a>
+
+  <a href="https://www.snapchat.com/" class="fa fa-snapchat"></a>
+
+</div>
+<br>
+</body>

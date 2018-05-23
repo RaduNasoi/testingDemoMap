@@ -1,0 +1,36 @@
+
+<body>
+
+<div class="container">
+  <div class="text-center">
+<h2>Profit: </h2>
+<p style="color:red;" id="profit">
+
+
+</p>
+  <hr>
+
+<label>Set negative rating for deleting an event</label>
+<br>
+<input type="text" placeholder="Rating" [(ngModel)]="negativeRating" name="negativeRating" />
+<button class="btn btn-success" (click)="setRating(negativeRating)">Submit</button>
+<br>
+<span>Actual value: <p id="rating"></p></span>
+  <br>
+  <hr>
+  <label>Search users:</label>
+  <br>
+  <input type="text" placeholder="Search user" [(ngModel)]="search" name="search" />
+  <button class="btn btn-success" (click)="searchUser(search)">Search</button>
+  <h3 id="user1"> </h3>
+  <button class="btn btn-danger" *ngIf="isSearched()" (click)="deleteUser(search)">Delete</button>
+  <button class="btn btn-success" *ngIf="isSearched() && isUser(search)" (click)="updateUserRole(search,'admin')">Make Admin</button>
+  <button class="btn btn-success" *ngIf="isSearched()&& isAdmin(search)" (click)="updateUserRole(search,'user')">Make User</button>
+<hr>
+
+
+
+</div>
+
+</div>
+</body>

@@ -1,0 +1,93 @@
+
+body {
+
+  background-image:url("../images/background-photo1.png");
+
+
+
+  background-position: center center;
+
+
+  background-repeat: no-repeat;
+
+  background-attachment: fixed;
+
+
+  background-size: cover;
+
+  background-color:#464646;
+
+}
+
+/* For mobile devices */
+@media only screen and (max-width: 767px) {
+  body {
+    background-image:url("../images/background-photo-mobile-devices1.png");
+
+  }
+}
+p, h1{
+  color: white;
+  text-align: center;
+}
+
+.content{
+
+  margin: 0 auto;
+}
+
+
+.button {
+  border-radius: 4px;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 28px;
+  padding: 20px;
+  width: 200px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+  border: 12px solid white;
+}
+
+.button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+
+}
+
+.button span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.button:hover span {
+  padding-right: 25px;
+}
+
+.button:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+
+
+/*.blur img {*/
+
+  /*-webkit-filter: blur(30px); -moz-filter: blur(30px);*/
+  /*-o-filter: blur(30px); -ms-filter: blur(30px);*/
+  /*filter: url(#blur); filter: blur(30px);  filter:progid:DXImageTransform.Microsoft.Blur(PixelRadius='3');*/
+  /*-webkit-transition: 2s -webkit-filter linear;*/
+  /*-o-transition: 2s -o-filter linear;*/
+/*}*/
+
+/*.blur img:hover {*/
+  /*-webkit-filter: blur(0px); -moz-filter: blur(0px); -o-filter: blur(0px); -ms-filter: blur(0px);*/
+  /*filter:progid:DXImageTransform.Microsoft.Blur(PixelRadius='0'); filter: blur(0px);*/
+/*}*/

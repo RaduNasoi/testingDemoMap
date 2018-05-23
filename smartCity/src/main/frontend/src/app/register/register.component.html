@@ -1,0 +1,32 @@
+<body>
+<div class="login-page">
+
+  <div class="form">
+    <img src="https://mir-s3-cdn-cf.behance.net/project_modules/disp/b666f811889067.562541eff3013.png"/>
+    <h2><strong>Register</strong></h2>
+    <br>
+
+    <form class="login-form">
+      <label>Username:</label>
+      <input type="text" placeholder="username" [(ngModel)]="username" name="username"/>
+      <!--<label>Email:</label>-->
+      <!--<input type="text" placeholder="email" [(ngModel)]="email" name="email"/>-->
+      <label>CNP(*Optional for admin):</label>
+      <input type="text" placeholder="CNP" [(ngModel)]="CNP" name="CNP"/>
+      <label>Email(Optional):</label>
+      <input type="email" placeholder="Email" [(ngModel)]="email2" name="email2"/>
+      <label>Domain(Optional):</label>
+      <input type="text" placeholder="Your website" [(ngModel)]="domain" name="domain"/>
+      <label>Choose a password:</label>
+      <input type="password" placeholder="Password" [(ngModel)]="password1" name="password1"/>
+      <label>Confirm password:</label>
+      <input type="password" placeholder="Password" [(ngModel)]="password2" name="password2"/>
+      <button (click)="checkCredentials(username,password1,password2,CNP,email2,domain)">register</button>
+
+      <p id="error"></p>
+      <p class="message">Already a member? <a routerLink="/login">Sign in</a></p>
+    </form>
+  </div>
+</div>
+<br>
+</body>

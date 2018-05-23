@@ -1,0 +1,96 @@
+<body>
+<div class="login-page">
+
+  <div class="form">
+    <h2><strong>Enroll your park!</strong></h2>
+    <br>
+    <!--<form class="register-form">-->
+
+      <!--<input type="text" placeholder="name"/>-->
+      <!--<input type="password" placeholder="password"/>-->
+      <!--<input type="text" placeholder="email address"/>-->
+      <!--<button>create</button>-->
+      <!--<p class="message">Already registered? <a href="#">Sign In</a></p>-->
+    <!--</form>-->
+    <form class="login-form">
+      <label>Name:</label>
+      <input type="text" placeholder="Name" [(ngModel)]="name" name="name" required/>
+      <label>Number of cars parking:</label>
+      <input type="number" placeholder="Number of cars parking" [(ngModel)]="noCars" name="noCars" required/>
+      <label>Adress:</label>
+      <!--<input type="text" placeholder="Adress" [(ngModel)]="adress" name="adress"/>-->
+      <agm-map
+        [latitude]="44.42"
+        [longitude]="26.1"
+        [zoom]='11'
+        (mapClick)="onMapClicked($event)">
+
+
+        <agm-marker  *ngFor="let m of markers; let i = index"
+                     [iconUrl]="m.icon"
+                     [visible]='m.visible'
+                     (markerClick)="onClick(m)"
+                     [latitude]="m.lat"
+                     [longitude]="m.lng"
+                     [markerDraggable]="m.draggable"
+                     (dragEnd)="markerDragEnd(m, $event)">
+
+
+          <agm-info-window #infowindow>
+            <br>
+
+
+
+            <br>
+            <!--<p style="text-align:center;" *ngIf="!isParking(m)"><span class="fa fa-user"></span><strong > {{m.username}}</strong> said: </p>-->
+            <!--<p style="text-align:center;" *ngIf="isParking(m)"><span class="fa fa-map-o"></span><strong > Parking: </strong>  </p>-->
+            <div class="eventText">
+
+              <strong><h3> {{m.name}} </h3></strong>
+
+            </div>
+            <br>
+            <span> <strong>Free parking spots: {{m.freeSpotsParking}}</strong> </span>
+
+            <div  style="text-align:center;">
+              <br>
+              <form>
+                <!--<p *ngIf="!isParking(m)" for="event">Edit event:</p>-->
+                <!--<input *ngIf="!isParking(m)" type="text" id="event" [(ngModel)]="event" name="event" placeholder="Event name">-->
+
+
+              </form>
+              <br>
+              <button  class="btn btn-success btn-sm" (click)="addEvent(m, event); infowindow.close()">Add Event</button>
+              <button  class="btn btn-success btn-sm" (click)="onDelete(m); infowindow.close()">Delete</button>
+
+            </div>
+          </agm-info-window>
+
+
+
+
+
+
+
+        </agm-marker>
+
+
+      </agm-map>
+      <!--<br>-->
+      <!--<p>Go to coords:</p>-->
+      <!--<input type="text" placeholder="lat"/> <input type="text" placeholder="lng"/>-->
+      <br>
+      <button (click)="enroll(name,noCars)">Enroll</button>
+      <!--<p class="message">Not registered? <a routerLink="/register">Create an account</a></p>-->
+
+
+    </form>
+
+
+  </div>
+
+
+</div>
+<br>
+</body>

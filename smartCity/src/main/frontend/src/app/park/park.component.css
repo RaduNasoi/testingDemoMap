@@ -1,0 +1,183 @@
+
+body {
+
+  background-image:url("../images/background-photo1.png");
+
+
+  background-position: center center;
+
+
+  background-repeat: no-repeat;
+
+  background-attachment: fixed;
+
+
+  background-size: cover;
+
+  background-color:#464646;
+
+}
+
+/* For mobile devices */
+@media only screen and (max-width: 767px) {
+  body {
+    background-image:url("../images/background-photo-mobile-devices1.png");
+
+  }
+}
+
+agm-map {
+  height: 450px;
+  width: 100%;
+}
+
+#map{
+  border: 1px solid #a1a1a1;
+
+  background: #dddddd;
+
+  border-radius: 5px;
+}
+
+h1{
+  text-align: center;
+  color: white;
+}
+
+
+/* Optional: Makes the sample page fill the window. */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+#right-panel {
+  font-family: 'Roboto','sans-serif';
+  line-height: 30px;
+  padding-left: 10px;
+  border: 1px solid #a1a1a1;
+  background: #dddddd;
+  border-radius: 5px;
+}
+
+
+#right-panel select {
+  width: 100%;
+}
+
+#right-panel i {
+  font-size: 12px;
+}
+#right-panel {
+  height: 100%;
+  float: right;
+  width: 420px;
+  overflow: auto;
+}
+
+
+@media print {
+  #map {
+    height: 500px;
+    margin: 0;
+  }
+  #right-panel {
+    float: none;
+    width: auto;
+  }
+}
+.eventText{
+  border: 1px solid #5cb85c;
+  text-align: center;
+  background: #5cb85c;
+  color: white;
+  border-radius: 3px;
+}
+
+
+input[type=text] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: none;
+  background-color: #E9E9E9;
+  color: black;
+}
+
+select {
+  width: inherit;
+  padding:5px;
+  margin: 0;
+  -webkit-border-radius:4px;
+  -moz-border-radius:4px;
+  border-radius:4px;
+  -webkit-box-shadow: 0 3px 0 #ccc, 0 -1px #fff inset;
+  -moz-box-shadow: 0 3px 0 #ccc, 0 -1px #fff inset;
+  box-shadow: 0 3px 0 #ccc, 0 -1px #fff inset;
+  background: #f8f8f8;
+  color:#888;
+  border:none;
+  outline:none;
+  display: inline-block;
+  -webkit-appearance:none;
+  -moz-appearance:none;
+  appearance:none;
+  cursor:pointer;
+  position:center;
+  text-align: center;
+  text-align-last: center;
+}
+
+/* Targetting Webkit browsers only. FF will show the dropdown arrow with so much padding. */
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  select {padding-right:18px}
+}
+
+label {position:relative}
+label:after {
+  content:'<>';
+  font:11px "Consolas", monospace;
+  color:#aaa;
+  -webkit-transform:rotate(90deg);
+  -moz-transform:rotate(90deg);
+  -ms-transform:rotate(90deg);
+  transform:rotate(90deg);
+  right:8px; top:2px;
+  padding:0 0 2px;
+  border-bottom:1px solid #ddd;
+  position:absolute;
+  pointer-events:none;
+}
+label:before {
+  content:'';
+  right:6px; top:0px;
+  width:20px; height:20px;
+  background:#f8f8f8;
+  position:absolute;
+  pointer-events:none;
+  display:block;
+}
+.voter {
+  width: 20px;
+  font-size: 34px;
+  text-align: center;
+  color: #999;
+  display:inline;
+}
+.vote-button {
+  cursor: pointer;
+}
+
+.fa-thumbs-up:hover{
+  color:blue;
+}
+.fa-thumbs-down:hover{
+  color: red;
+}
+
+#error{
+  color:red;
+}
